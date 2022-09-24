@@ -11,7 +11,7 @@ class Portrait {
     this.img = new Image();
   }
 
-  import(url: string, card: Card | null = null) {
+  import(url: string, card: Card) {
     this.isLoad = false;
     clearTimeout(this.tp);
     this.tp = setTimeout(() => {
@@ -67,7 +67,7 @@ class Logo {
     }, 0);
     this.img.onload = () => {
       this.isLoad = true;
-      if (!card.portraitW) {
+      if (!card.logoW) {
         card.logoW = card.logo.img.width;
         card.logoH = card.logo.img.height;
       }
@@ -150,33 +150,35 @@ export class Card {
 // 设定卡牌
 export function setCard(card: Card, config: Config) {
   card.importPortrait(config.resourceDir + "/立绘/" + card.code + ".png");
+  let dCard = new Card();
   const d = config.cardList[card.code];
-  card.name = d?.name ? d?.name : card.name;
-  card.nameEng = d?.nameEng ? d?.nameEng : card.nameEng;
-  card.label = d?.label ? d?.label : card.label;
-  card.party = d?.party ? getPartyCode(d?.party, config.partyList) : card.party;
-  card.isShine = d?.isShine ? d?.isShine : card.isShine;
-  card.isOverflow = d?.isOverflow ? d?.isOverflow : card.isOverflow;
-  card.shadowDistance = d?.shadowDistance ? d?.shadowDistance : card.shadowDistance;
-  card.portraitX = d?.portraitX ? d?.portraitX : card.portraitX;
-  card.portraitY = d?.portraitY ? d?.portraitY : card.portraitY;
-  card.portraitW = d?.portraitW ? d?.portraitW : card.portraitW;
-  card.portraitH = d?.portraitH ? d?.portraitH : card.portraitH;
-  card.shineColor = d?.shineColor ? d?.shineColor : card.shineColor;
+  card.name = d?.name ? d?.name : dCard.name;
+  card.nameEng = d?.nameEng ? d?.nameEng : dCard.nameEng;
+  card.label = d?.label ? d?.label : dCard.label;
+  card.party = d?.party ? getPartyCode(d?.party, config.partyList) : dCard.party;
+  card.isShine = d?.isShine ? d?.isShine : dCard.isShine;
+  card.isOverflow = d?.isOverflow ? d?.isOverflow : dCard.isOverflow;
+  card.shadowDistance = d?.shadowDistance ? d?.shadowDistance : dCard.shadowDistance;
+  card.portraitX = d?.portraitX ? d?.portraitX : dCard.portraitX;
+  card.portraitY = d?.portraitY ? d?.portraitY : dCard.portraitY;
+  card.portraitW = d?.portraitW ? d?.portraitW : dCard.portraitW;
+  card.portraitH = d?.portraitH ? d?.portraitH : dCard.portraitH;
+  card.shineColor = d?.shineColor ? d?.shineColor : dCard.shineColor;
 }
 
 // 设定势力
 export function setParty(card: Card, config: Config) {
   card.importLogo(config.resourceDir + "/势力/" + card.party + ".png");
+  let dCard = new Card();
   const p = config.partyList[card.party];
-  card.logoX = p?.logoX ? p?.logoX : card.logoX;
-  card.logoY = p?.logoY ? p?.logoY : card.logoY;
-  card.logoW = p?.logoW ? p?.logoW : card.logoW;
-  card.logoH = p?.logoH ? p?.logoH : card.logoH;
-  card.themeColor = p?.themeColor ? p?.themeColor : card.themeColor;
-  card.nameColor = p?.nameColor ? p?.nameColor : card.nameColor;
-  card.labelColor = p?.labelColor ? p?.labelColor : card.labelColor;
-  card.borderColor = p?.borderColor ? p?.borderColor : card.borderColor;
+  card.logoX = p?.logoX ? p?.logoX : dCard.logoX;
+  card.logoY = p?.logoY ? p?.logoY : dCard.logoY;
+  card.logoW = p?.logoW ? p?.logoW : dCard.logoW;
+  card.logoH = p?.logoH ? p?.logoH : dCard.logoH;
+  card.themeColor = p?.themeColor ? p?.themeColor : dCard.themeColor;
+  card.nameColor = p?.nameColor ? p?.nameColor : dCard.nameColor;
+  card.labelColor = p?.labelColor ? p?.labelColor : dCard.labelColor;
+  card.borderColor = p?.borderColor ? p?.borderColor : dCard.borderColor;
 }
 
 // 设定阴影

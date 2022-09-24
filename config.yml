@@ -1,0 +1,7 @@
+resourceDir: D:/VupSlash/0.4.1.2资源集
+onlyEditNewParty: true
+saveNameType: code
+isAutoDownload: true
+saveCardSize:
+  w: 600
+  h: 870
