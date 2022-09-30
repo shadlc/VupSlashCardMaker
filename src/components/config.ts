@@ -128,7 +128,7 @@ export class Config {
       ]);
     }
     const partySheet = [
-      ["name", "code", "themeColor", "nameColor", "labelColor", "borderColor"],
+      ["code", "name", "themeColor", "nameColor", "labelColor", "borderColor"],
     ];
     for( let i in partyList) {
       partySheet.push([
